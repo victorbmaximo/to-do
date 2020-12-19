@@ -1,0 +1,244 @@
+.t-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 60;
+  
+    &--active {
+      transform: scale(1);
+      opacity: 1;
+      visibility: visible;
+  
+      .t-modal__body {
+        transform: scale(1);
+      }
+    }
+  
+    &--no-padding .t-modal__body {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  
+    &--no-padding-top .t-modal__body {
+      padding-top: 0;
+    }
+  
+    &--no-padding-bottom .t-modal__content {
+      padding-bottom: 0;
+    }
+  
+    &--title-padding .t-modal__title {
+      padding-left: rem(47);
+    }
+  
+    &--no-margin-content .t-modal__content {
+      margin: 0;
+    }
+  }
+  
+  .t-modal__overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(map.get($colors, "gray-medium"), 0.5);
+  }
+  
+  .t-modal__body {
+    background-color: #fff;
+    padding: rem(40);
+    position: relative;
+    z-index: 2;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0);
+    transition: transform 0.2s ease-in-out;
+    transition-delay: 0.1s;
+  }
+  
+  .t-modal__body--full {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .t-modal__body--full .t-modal__content {
+    overflow-x: hidden;
+  }
+  
+  .t-modal__body--no-padding, .t-modal__body--no-padding .t-modal__content {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .t-modal__body.t-modal__body--with-closed-bar {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .t-modal__head {
+    background-color: #fff;
+    flex-shrink: 0;
+  }
+  
+  .t-modal__title {
+    margin-bottom: 0;
+    margin-top: rem(20);
+    display: flex;
+    align-items: center;
+  
+    &::before {
+      font-size: rem(22);
+      line-height: rem(24);
+      margin-right: rem(16);
+    }
+  }
+  
+  .t-modal__subtitle {
+    font-size: rem(14);
+  }
+  
+  .t-modal__close {
+    background: none;
+    border: none;
+    font-size: 0;
+    position: absolute;
+    top: rem(40);
+    right: rem(40);
+    cursor: pointer;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 2;
+  
+    &::before {
+      content: "X";
+      font-size: rem(16);
+      color: map.get($colors, "gray-medium");
+    }
+  }
+  
+  .t-modal__closed-bar {
+    max-height: rem(74);
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: rem(113);
+    padding-right: rem(113);
+    border-bottom: solid rem(1) map.get($colors, "gray");
+  }
+  
+  .t-modal__closed-bar__v-ctn {
+    width: 100%;
+  }
+  
+  .t-modal__closed-bar-btn {
+    background: none;
+    border: none;
+    font-size: rem(14);
+    line-height: 1.71;
+    color: map.get($colors, "gray-medium");
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-right: rem(15);
+  
+    &::after {
+      font-size: rem(10);
+      color: map.get($colors, "gray-medium");
+      margin-left: rem(10);
+    }
+  }
+  
+  .t-modal__content {
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-top: rem(24);
+    padding-bottom: rem(22);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .t-modal__foot {
+    text-align: center;
+    border-top: rem(1) solid map.get($colors, "gray-medium");
+    padding-top: rem(35);
+  }
+  
+  .t-modal__foot-close {
+    color: #000;
+    font-size: rem(14);
+    font-weight: medium;
+    display: inline-block;
+    background: none;
+    border: none;
+    text-decoration: underline;
+  }
+  
+  @media only screen and (max-width: map.get($media, "xs")) {
+    .t-modal .t-modal__content {
+      padding-right: 0;
+  
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  
+    .t-modal--title-padding .t-modal__title {
+      padding-left: rem(16);
+    }
+  
+    .t-modal__body {
+      width: 100%;
+      height: 100%;
+      max-height: initial;
+      padding: rem(28) rem(16);
+  
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  
+    .t-modal__body--no-padding,
+    .t-modal__body--no-padding .t-modal__content {
+      padding: 0;
+      margin: 0;
+    }
+  
+  
+    .t-modal__close {
+      top: rem(24);
+      right: rem(16);
+    }
+  
+    .t-modal__closed-bar {
+      padding-left: em(16);
+      padding-right: em(16);
+    }
+  
+    .t-modal__closed-bar__v-ctn.v-ctn {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  
+    .t-modal__closed-bar-btn {
+      margin-right: 0;
+    }
+  
+  }
+  

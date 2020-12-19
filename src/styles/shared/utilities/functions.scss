@@ -1,0 +1,7 @@
+@mixin theme($property, $value: neutral, $forced-value: false) {
+    #{$property}: $value;
+ }
+
+@function rem($value, $base: 14) {
+    @return $value / $base + rem;
+}

@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Ler Livro",
+      "status": true
+    },
+    {
+      "id": 4,
+      "title": "Lavar o carro",
+      "status": false
+    },
+    {
+      "id": 8,
+      "title": "Assistir Série",
+      "status": false
+    },
+    {
+      "id": 9,
+      "title": "Estudar",
+      "status": true
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<div #modal class="t-modal {{ rootClass }}" [id]="id" role="dialog" aria-modal="true"
+    [ngClass]="{'t-modal--active': activeModal, 'no-scroll': disableScroll}" [attr.aria-hidden]="!activeModal"
+    [tabindex]="activeModal ? 0 : -1">
+    <div (click)="closeModal()" class="t-modal__overlay"></div>
+
+    <div class="t-modal__body {{ childClass }}" [ngClass]="{'t-modal__body--with-closed-bar': closedBar}">
+
+        <div *ngIf="closedBar" class="t-modal__closed-bar">
+            <button tabindex="0" class="t-modal__closed-bar-btn" (click)="closeModal()"
+                type="button">{{ closedBar }}</button>
+        </div>
+        <button tabindex="0" *ngIf="close" class="t-modal__close" type="button" (click)="closeModal()">Fechar
+        </button>
+        <div *ngIf="title || subtitle" class="t-modal__head">
+            <h4 *ngIf="title" class="t-modal__title">
+                {{ title }}</h4>
+            <p *ngIf="subtitle" class="m-heading__subtitle t-modal__subtitle">{{ subtitle }}</p>
+        </div>
+        <div #modalContent class="t-modal__content">
+
+            <ng-content></ng-content>
+
+        </div>
+        <div *ngIf="foot" class="t-modal__foot">
+            <button tabindex="0" class="t-modal__foot-close" type="button" (click)="closeModal()">Fechar</button>
+        </div>
+    </div>
+</div>

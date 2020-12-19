@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="header">
+        <div class="header-col-left">
+            <h1 class="title">Tarefas</h1>
+        </div>
+
+        <div class="header-col-right">
+            <input type="text" [(ngModel)]="titleNewTask" class="inputTitle" placeholder="Adicione uma tarefa">
+            <button (click)="addTask('modal-1')" class="buttonAdd">+</button>
+        </div>
+    </div>
+
+    <div class="task-list">
+        <ng-container *ngIf="(activeTasks$ | async); else loading">
+            <ng-container *ngIf="activeTasks$ | async as tasks">
+                <div class="task" *ngFor="let task of tasks">
+                    <div class="col-left">
+                        <span class="option-done" (click)="completeTask(task.id)">
+                        </span>
+                        <h3 class="task-title">{{ task.title }}</h3>
+                    </div>
+
+                    <span class="option-delete" (click)="deleteTask(task.id, task.status)"></span>
+                </div>
+            </ng-container>
+        </ng-container>
+
+        <h3 class="completed-tasks-title">
+            Concluída
+            <ng-container *ngIf="(completedTasks$ | async); else loading">
+                <ng-container *ngIf="completedTasks$ | async as tasks">
+                    <div class="qt-completed">
+                        ({{ tasks.length }})
+                    </div>
+                </ng-container>
+            </ng-container>
+        </h3>
+
+        <ng-container *ngIf="(completedTasks$ | async); else loading">
+            <ng-container *ngIf="completedTasks$ | async as tasks">
+                <div class="task" *ngFor="let task of tasks">
+                    <div class="col-left">
+                        <span class="option-done">
+                            <fa-icon [icon]="faCheck" size="xs" [styles]="{'color': '#17349e'}"></fa-icon>
+                        </span>
+                        <h3 class="task-title">{{ task.title }}</h3>
+                    </div>
+
+                    <span class="option-delete" (click)="deleteTask(task.id, task.status)"></span>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div>
+        loading
+    </div>
+</ng-template>
+
+<app-modal id="modal-1" title="oi" subtitle="tudo bem">
+    <p>teste</p>
+</app-modal>

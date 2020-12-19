@@ -10,7 +10,7 @@
           "style": "scss"
         },
         "@schematics/angular:application": {
-          "strict": true
+          "strict": false
         }
       },
       "root": "",
@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "to-do"
+  "defaultProject": "to-do",
+  "cli": {
+    "defaultCollection": "@datorama/akita"
+  }
 }
