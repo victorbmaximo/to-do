@@ -70,7 +70,7 @@ export class TasksComponent implements OnInit {
           "status": true
         }
 
-        this.taskStoreService.add
+        // this.taskStoreService.add
 
         // this.taskService.addTask(newTask)
         //   .subscribe(v => {
