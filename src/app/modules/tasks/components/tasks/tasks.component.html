@@ -5,8 +5,9 @@
         </div>
 
         <div class="header-col-right">
-            <input type="text" [(ngModel)]="titleNewTask" class="inputTitle" placeholder="Adicione uma tarefa">
-            <button (click)="addTask('modal-1')" class="buttonAdd">+</button>
+            <input type="text" (keyup.enter)="addTask()" [(ngModel)]="titleNewTask" class="inputTitle"
+                placeholder="Adicione uma tarefa">
+            <button (click)="addTask()" class="buttonAdd">+</button>
         </div>
     </div>
 
